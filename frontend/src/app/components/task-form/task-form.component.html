@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#addTaskModal"
+  >
+    Agregar Tarea <i class="fa-solid fa-file-circle-plus"></i>
+  </button>
+</div>
+
+<!-- Modal para agregar tarea -->
+<div
+  class="modal fade"
+  id="addTaskModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <!-- Contenido de la modal aquí -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addTaskModalLabel">Agregar Nueva Tarea</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario para agregar tarea -->
+        <form [formGroup]="taskForm">
+          <div class="form-group">
+            <label for="taskNombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="taskNombre"
+              formControlName="nombre"
+            />
+          </div>
+          <div class="form-group">
+            <label for="taskDescripcion">Descripción</label>
+            <input
+              type="text"
+              class="form-control"
+              id="taskDescripcion"
+              formControlName="descripcion"
+            />
+          </div>
+          <div class="form-group">
+            <label for="taskPrioridad">Prioridad</label>
+            <select
+              class="form-control"
+              id="taskPrioridad"
+              formControlName="prioridad"
+            >
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="taskEstado">Estado</label>
+            <select
+              class="form-control"
+              id="taskEstado"
+              formControlName="estado"
+            >
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" (click)="addTask()" class="btn btn-primary">
+          Guardar Tarea
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

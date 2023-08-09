@@ -1,10 +1,18 @@
 import express from "express";
 import config from "./config";
-import tareasRoutes from "./routes/tareas.routes";
+import cors from "cors"; // Importa el módulo CORS
+import tareasRoutes from "./routes/tareas.routes"; // Importa tus rutas
 
 const app = express();
 
-//settings
+const corsOptions = {
+  origin: "*", // Cambia esto al dominio correcto o utiliza un arreglo de dominios permitidos para recibir peticiones by Eliezer Rivera
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
+app.use(cors(corsOptions));
+
+// Settings
 app.set("port", config.serverPort);
 
 app.use(express.json());

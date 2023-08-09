@@ -5,7 +5,7 @@ export const getTareas = async (req, res) => {
   const pool = await getConnection();
   try {
     const result = await pool.request().query(queries_tareas.getTareas);
-    console.log(result);
+    console.log(result.recordset);
 
     res.json(result.recordset);
   } catch (error) {
