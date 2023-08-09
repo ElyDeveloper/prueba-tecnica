@@ -2,18 +2,23 @@
 
 GET {{api}}
 ###
-GET {{api}}/3
+GET {{api}}/id/4
 ###
 GET {{api}}/buscar/descripcion tarea modificada
+###
+GET {{api}}/activas
+
+###
+GET {{api}}/inactivas
 ###
 POST {{api}}
 Content-Type: application/json
 
 {
-    "Nombre": "Tarea 6",
-    "Descripcion": "Descripcion de la tarea 6",
+    "Nombre": "Tarea 7",
+    "Descripcion": "Descripcion de la tarea 7",
     "Prioridad": "Media",
-    "Estado": 0
+    "Estado": 1
 }
 
 ###
