@@ -1,3 +1,33 @@
 @api = http://localhost:3000/tareas
 
 GET {{api}}
+###
+GET {{api}}/3
+###
+GET {{api}}/buscar/descripcion tarea modificada
+###
+POST {{api}}
+Content-Type: application/json
+
+{
+    "Nombre": "Tarea 6",
+    "Descripcion": "Descripcion de la tarea 6",
+    "Prioridad": "Media",
+    "Estado": 0
+}
+
+###
+PUT {{api}}/4
+Content-Type: application/json
+
+{
+    "Nombre": "Tarea Modificada de Nuevo",
+    "Descripcion": "Descripcion de la tarea tambien modificada",
+    "Prioridad": "Baja",
+    "Estado": 1
+}
+
+###
+DELETE {{api}}/1
+```
+
