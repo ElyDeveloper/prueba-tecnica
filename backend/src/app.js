@@ -5,7 +5,7 @@ import tareasRoutes from "./routes/tareas.routes";
 const app = express();
 
 //settings
-app.set("port", config.port);
+app.set("port", config.serverPort);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

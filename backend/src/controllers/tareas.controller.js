@@ -1,11 +1,10 @@
-import { getConnection, sql } from "../database/connection";
-import queries from "../database/queries_tareas";
+import { getConnection, sql, queries_tareas } from "../database";
 import { validarTarea } from "../schemas/tareas";
 
 export const getTareas = async (req, res) => {
   const pool = await getConnection();
   try {
-    const result = await pool.request().query(queries.getTareas);
+    const result = await pool.request().query(queries_tareas.getTareas);
     console.log(result);
 
     res.json(result.recordset);
@@ -24,7 +23,7 @@ export const getTareaById = async (req, res) => {
     const result = await pool
       .request()
       .input("IdTarea", sql.Int, id)
-      .query(queries.getTareaById);
+      .query(queries_tareas.getTareaById);
     console.log(result);
 
     res.send(result.recordset[0]);
@@ -39,7 +38,7 @@ export const getTareaById = async (req, res) => {
 export const getTareasActivas = async (req, res) => {
   const pool = await getConnection();
   try {
-    const result = await pool.request().query(queries.getTareasActivas);
+    const result = await pool.request().query(queries_tareas.getTareasActivas);
     console.log(result);
 
     res.json(result.recordset);
@@ -54,7 +53,7 @@ export const getTareasActivas = async (req, res) => {
 export const getTareasInactivas = async (req, res) => {
   const pool = await getConnection();
   try {
-    const result = await pool.request().query(queries.getTareasInactivas);
+    const result = await pool.request().query(queries_tareas.getTareasInactivas);
     console.log(result);
 
     res.json(result.recordset);
@@ -79,7 +78,7 @@ export const searchTareas = async (req, res) => {
     const result = await pool
       .request()
       .input("busqueda", sql.VarChar, formasVariantes)
-      .query(queries.searchTareas);
+      .query(queries_tareas.searchTareas);
     console.log(result);
 
     res.json(result.recordset);
@@ -113,7 +112,7 @@ export const createNewTarea = async (req, res) => {
       .input("DescripcionTarea", sql.VarChar, newTarea.Descripcion)
       .input("Prioridad", sql.VarChar, newTarea.Prioridad)
       .input("Estado", sql.Bit, newTarea.Estado)
-      .query(queries.createNewTarea);
+      .query(queries_tareas.createNewTarea);
     res.json(resultPool);
   } catch (error) {
     res.status(500);
@@ -146,7 +145,7 @@ export const updateTarea = async (req, res) => {
       .input("DescripcionTarea", sql.VarChar, tareaUpdate.Descripcion)
       .input("Prioridad", sql.VarChar, tareaUpdate.Prioridad)
       .input("Estado", sql.Bit, tareaUpdate.Estado)
-      .query(queries.updateTarea);
+      .query(queries_tareas.updateTarea);
 
     res.json(resultPool);
   } catch (error) {
@@ -164,7 +163,7 @@ export const deleteTarea = async (req, res) => {
     const result = await pool
       .request()
       .input("IdTarea", sql.Int, id)
-      .query(queries.deleteTarea);
+      .query(queries_tareas.deleteTarea);
 
     res.json(result);
   } catch (error) {

@@ -1,4 +1,4 @@
-export default {
+export const queries_tareas = {
   getTareas: `
   SELECT *
   FROM tb_tareas
