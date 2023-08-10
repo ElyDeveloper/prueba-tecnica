@@ -5,5 +5,5 @@ export interface Task {
   FechaCreacion?: string;
   FechaVencimiento?: string;
   Prioridad: string;
-  Estado: boolean;
+  Estado?: boolean | number;
 }

@@ -1,5 +1,13 @@
 export const queries_tareas = {
-  getTareas: `
+  getTareas: `SELECT * FROM 
+      tb_tareas ORDER BY Estado ASC,
+      CASE Prioridad
+        WHEN 'Alta' THEN 1
+        WHEN 'Media' THEN 2
+        WHEN 'Baja' THEN 3
+      ELSE 4
+      END ASC,ID DESC`,
+  getTareasByPrioridad: `
   SELECT *
   FROM tb_tareas
   ORDER BY

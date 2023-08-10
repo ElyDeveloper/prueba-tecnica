@@ -35,6 +35,23 @@ export const getTareaById = async (req, res) => {
   }
 };
 
+export const getTareasByPrioridad = async (req, res) => {
+  const pool = await getConnection();
+  try {
+    const result = await pool
+      .request()
+      .query(queries_tareas.getTareasByPrioridad);
+    console.log(result);
+
+    res.json(result.recordset);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  } finally {
+    pool.close();
+  }
+};
+
 export const getTareasActivas = async (req, res) => {
   const pool = await getConnection();
   try {
@@ -109,7 +126,7 @@ export const createNewTarea = async (req, res) => {
     const resultPool = await pool
       .request()
       .input("Nombre", sql.VarChar, newTarea.Nombre)
-      .input("DescripcionTarea", sql.VarChar, newTarea.Descripcion)
+      .input("DescripcionTarea", sql.VarChar, newTarea.DescripcionTarea)
       .input("Prioridad", sql.VarChar, newTarea.Prioridad)
       .input("Estado", sql.Bit, newTarea.Estado)
       .query(queries_tareas.createNewTarea);
@@ -142,7 +159,7 @@ export const updateTarea = async (req, res) => {
       .request()
       .input("IdTarea", sql.Int, id)
       .input("Nombre", sql.VarChar, tareaUpdate.Nombre)
-      .input("DescripcionTarea", sql.VarChar, tareaUpdate.Descripcion)
+      .input("DescripcionTarea", sql.VarChar, tareaUpdate.DescripcionTarea)
       .input("Prioridad", sql.VarChar, tareaUpdate.Prioridad)
       .input("Estado", sql.Bit, tareaUpdate.Estado)
       .query(queries_tareas.updateTarea);

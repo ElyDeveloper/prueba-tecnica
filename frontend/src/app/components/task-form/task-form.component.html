@@ -1,11 +1,12 @@
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end fixed-top m-5">
   <button
     type="button"
-    class="btn btn-primary"
+    class="btn btn-primary round-button p-1"
     data-bs-toggle="modal"
     data-bs-target="#addTaskModal"
+    (click)="addTask()"
   >
-    Agregar Tarea <i class="fa-solid fa-file-circle-plus"></i>
+    <i class="fs-4 fa-solid fa-plus"></i>
   </button>
 </div>
 
@@ -21,7 +22,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addTaskModalLabel">Agregar Nueva Tarea</h5>
+        <h5 class="modal-title" id="addTaskModalLabel">
+          {{ isEditar ? "Editar Tarea" : "Agregar Tarea" }}
+        </h5>
         <button
           type="button"
           class="btn-close"
@@ -31,26 +34,26 @@
       </div>
       <div class="modal-body">
         <!-- Formulario para agregar tarea -->
-        <form [formGroup]="taskForm">
-          <div class="form-group">
-            <label for="taskNombre">Nombre</label>
+        <form [formGroup]="taskForm" (change)="cleanError()">
+          <div class="form-group mb-3">
             <input
+              placeholder="Escriba el nombre de la tarea"
               type="text"
               class="form-control"
               id="taskNombre"
               formControlName="nombre"
             />
           </div>
-          <div class="form-group">
-            <label for="taskDescripcion">Descripción</label>
+          <div class="form-group mb-3">
             <input
+              placeholder="Describa la tarea"
               type="text"
               class="form-control"
               id="taskDescripcion"
               formControlName="descripcion"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="taskPrioridad">Prioridad</label>
             <select
               class="form-control"
@@ -62,26 +65,24 @@
               <option value="Baja">Baja</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="taskEstado">Estado</label>
-            <select
-              class="form-control"
-              id="taskEstado"
-              formControlName="estado"
-            >
-              <option value="1">Activo</option>
-              <option value="0">Inactivo</option>
-            </select>
-          </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button type="button" (click)="addTask()" class="btn btn-primary">
-          Guardar Tarea
-        </button>
+        <p *ngIf="isErrorForm" class="text-warning">
+          *Debe de llenar todos los campos
+        </p>
+        <div>
+          <button
+            type="button"
+            class="btn btn-secondary me-2"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="button" (click)="addTaskForm()" class="btn btn-primary">
+            Guardar Tarea
+          </button>
+        </div>
       </div>
     </div>
   </div>

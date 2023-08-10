@@ -17,20 +17,27 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 
+//Modulos de interfaz
+import { ToastrModule } from 'ngx-toastr';
+import { LoaderComponent } from './components/loader/loader.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TaskListComponent,
     LogoComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

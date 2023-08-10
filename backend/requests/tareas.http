@@ -15,10 +15,9 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "Nombre": "Tarea 7",
-    "Descripcion": "Descripcion de la tarea 7",
-    "Prioridad": "Media",
-    "Estado": 1
+    "Nombre": "Tarea 9",
+    "DescripcionTarea": "Descripcion de la tarea 9",
+    "Prioridad": "Media"
 }
 
 ###
@@ -27,7 +26,7 @@ Content-Type: application/json
 
 {
     "Nombre": "Tarea Modificada de Nuevo",
-    "Descripcion": "Descripcion de la tarea tambien modificada",
+    "DescripcionTarea": "Descripcion de la tarea tambien modificada",
     "Prioridad": "Baja",
     "Estado": 1
 }

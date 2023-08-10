@@ -1,0 +1,33 @@
+.card {
+  background: rgba(36, 36, 36, 0.142);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+.clase-activa {
+  background: rgba(36, 36, 36, 0.142);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+.clase-inactiva {
+  background: rgba(36, 36, 36, 0.142);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+}
+
+.tachar-texto {
+  text-decoration: line-through;
+  color: #353535;
+}
+
+.untachar-texto {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.round-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* Esto hace que el botón sea redondo */
+}

@@ -11,7 +11,7 @@ const tareaSchema = z.object({
     .max(50, {
       message: "El nombre debe tener máximo 50 caracteres",
     }),
-  Descripcion: z
+  DescripcionTarea: z
     .string({
       invalid_type_error: "La descripción debe ser una cadena de caracteres",
       required_error: "La descripción es requerida",
@@ -41,12 +41,7 @@ const tareaSchema = z.object({
     .int({
       invalid_type_error: "El estado debe ser un número entero",
     })
-    .min(0, {
-      message: "El estado debe ser solo 1 o 0",
-    })
-    .max(1, {
-      message: "El estado debe ser solo 1 o 0",
-    }),
+    .default(0),
 });
 
 export function validarTarea(tarea) {
