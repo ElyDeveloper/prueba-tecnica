@@ -16,6 +16,7 @@ Esta aplicación web permite a los usuarios administrar sus tareas mediante una 
 2. Asegúrate de tener Node.js instalado. Si no lo tienes, puedes descargarlo desde [nodejs.org](https://nodejs.org/).
 3. Importa la base de datos que se encuentra en la ruta: `recursos/DB_Test`.
 4. Se creo un script para crearla desde cero, pero este no tiene creado el indice de la tabla, por lo que se recomienda importar la base de datos, en caso de no querer hacerlo asi, ejecuta el script y posteriormente crea el indice en la tabla, la ruta es: `recursos/Crear BD desde cero sin índice.BAT`.
+5. Script para generar toda la base de datos, en ruta: `recursos/script.sql`.
 
 ## Configuración del Servidor Node.js (Backend)
 
